@@ -1,0 +1,11 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: TraefikService
+metadata:
+  name: vote-rollout-ts
+spec:
+  weighted:
+    services:
+      - name: vote # This should point to your stable service
+        port: 80
+      - name: vote-preview # This should point to your canary/preview service
+        port: 80
